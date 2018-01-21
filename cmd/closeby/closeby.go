@@ -3,7 +3,6 @@ package main
 import (
 	"flag"
 	"fmt"
-	"log"
 	"os"
 	"text/tabwriter"
 
@@ -38,7 +37,7 @@ func main() {
 
 	inRangeCustomers := customers.InRangeCustomers(lstOfCst, geo.Location{Lat: *lat, Long: *long}, 100.00)
 
-	log.Printf("inRangecustomers: %#+v", inRangeCustomers)
+	customers.PrintCustomers(os.Stdout, inRangeCustomers)
 }
 
 func usageOf(fs *flag.FlagSet, short string) func() {

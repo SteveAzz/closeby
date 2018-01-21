@@ -57,6 +57,14 @@ func (c *Customer) UnmarshalJSON(b []byte) error {
 	return nil
 }
 
+// ByID implements the sorter interface witch makes it easy to sort a slice of
+// customer by their IDs.
+type ByID []Customer
+
+func (c ByID) Len() int           { return len(c) }
+func (c ByID) Swap(i, j int)      { c[i], c[j] = c[j], c[i] }
+func (c ByID) Less(i, j int) bool { return c[i].ID < c[j].ID }
+
 // ReadFromFile reads a file with one customer per line, JSON-encoded and
 // returns a slice of customers. Only loads small files with this since it loads
 // its content in memory. Returns an error if it fails to load the file or read
