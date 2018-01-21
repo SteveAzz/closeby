@@ -8,13 +8,14 @@ import (
 	"text/tabwriter"
 
 	"github.com/SteveAzz/closeby/pkg/customers"
+	"github.com/SteveAzz/closeby/pkg/geo"
 )
 
 func main() {
 	fs := flag.NewFlagSet("closebycli", flag.ExitOnError)
 	var (
-		lat  = fs.String("lat", "53.339428", "Latitude of the location.")
-		long = fs.String("long", "-6.257664", "Longitude of the location.")
+		lat  = fs.Float64("lat", 53.339428, "Latitude of the location.")
+		long = fs.Float64("long", -6.257664, "Longitude of the location.")
 		loc  = fs.String("c", "", "Location of the list of c.")
 	)
 	fs.Usage = usageOf(fs, os.Args[0]+" -c $FILELOCATION")
@@ -35,9 +36,9 @@ func main() {
 		fmt.Fprintf(os.Stderr, "%s\n", err)
 	}
 
-	log.Printf("customers: %#+v", lstOfCst)
-	log.Printf("lat: %#+v", *lat)
-	log.Printf("long: %#+v", *long)
+	inRangeCustomers := customers.InRangeCustomers(lstOfCst, geo.Location{Lat: *lat, Long: *long}, 100.00)
+
+	log.Printf("inRangecustomers: %#+v", inRangeCustomers)
 }
 
 func usageOf(fs *flag.FlagSet, short string) func() {
