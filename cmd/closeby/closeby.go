@@ -13,13 +13,13 @@ import (
 func main() {
 	fs := flag.NewFlagSet("closebycli", flag.ExitOnError)
 	var (
-		lant = fs.String("lant", "53.339428", "Latitude of the location.")
+		lat  = fs.String("lat", "53.339428", "Latitude of the location.")
 		long = fs.String("long", "-6.257664", "Longitude of the location.")
 		loc  = fs.String("c", "", "Location of the list of c.")
 	)
 	fs.Usage = usageOf(fs, os.Args[0]+" -c $FILELOCATION")
 	if err := fs.Parse(os.Args[1:]); err != nil {
-		fmt.Fprint(os.Stdout, "Failed to parse flags")
+		fmt.Fprint(os.Stderr, "failed to parse flags")
 		fs.Usage()
 		os.Exit(1)
 	}
@@ -35,8 +35,8 @@ func main() {
 		fmt.Fprintf(os.Stderr, "%s\n", err)
 	}
 
-	log.Printf("lant: %#+v", *lant)
 	log.Printf("customers: %#+v", lstOfCst)
+	log.Printf("lat: %#+v", *lat)
 	log.Printf("long: %#+v", *long)
 }
 
