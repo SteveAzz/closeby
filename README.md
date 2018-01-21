@@ -1,5 +1,8 @@
 # closeby
 
+[ ![Codeship Status for SteveAzz/closeby](https://app.codeship.com/projects/6ae09a40-e109-0135-f609-6eccc654fb46/status?branch=master)](https://app.codeship.com/projects/266571)
+[![Go Report Card](https://goreportcard.com/badge/github.com/SteveAzz/closeby)](https://goreportcard.com/report/github.com/SteveAzz/closeby)
+
 Find places within the 100km range using the orthodromic distance.
 
 ## Install
