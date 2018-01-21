@@ -6,14 +6,16 @@ import (
 	"log"
 	"os"
 	"text/tabwriter"
+
+	"github.com/SteveAzz/closeby/pkg/customers"
 )
 
 func main() {
 	fs := flag.NewFlagSet("closebycli", flag.ExitOnError)
 	var (
-		lant      = fs.String("lant", "53.339428", "Latitude of the location.")
-		long      = fs.String("long", "-6.257664", "Longitude of the location.")
-		customers = fs.String("c", "", "Location of the list of customers.")
+		lant = fs.String("lant", "53.339428", "Latitude of the location.")
+		long = fs.String("long", "-6.257664", "Longitude of the location.")
+		loc  = fs.String("c", "", "Location of the list of c.")
 	)
 	fs.Usage = usageOf(fs, os.Args[0]+" -c $FILELOCATION")
 	if err := fs.Parse(os.Args[1:]); err != nil {
@@ -23,14 +25,19 @@ func main() {
 	}
 
 	// If no customer list is shown fail to start the cli.
-	if *customers == "" {
+	if *loc == "" {
 		fs.Usage()
 		os.Exit(1)
 	}
 
+	lstOfCst, err := customers.ReadFromFile(*loc)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "%s\n", err)
+	}
+
 	log.Printf("lant: %#+v", *lant)
+	log.Printf("customers: %#+v", lstOfCst)
 	log.Printf("long: %#+v", *long)
-	log.Printf("customers: %#+v", *customers)
 }
 
 func usageOf(fs *flag.FlagSet, short string) func() {
