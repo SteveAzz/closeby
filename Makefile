@@ -30,3 +30,10 @@ windows:
 	golang:1.9.2-alpine3.7 \
 	go build -o ${BUILD_DIR}/darwin/${BINARY}.exe cmd/closeby/closeby.go
 
+make test:
+	docker run \
+	-v ${CURRENT_DIR}:/go/src/github.com/SteveAzz/closeby \
+	-w /go/src/github.com/SteveAzz/closeby \
+	golang:1.9.2-alpine3.7 \
+	go test -v ./...
+
