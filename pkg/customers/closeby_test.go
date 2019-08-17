@@ -3,8 +3,9 @@ package customers
 import (
 	"testing"
 
-	"github.com/SteveAzz/closeby/pkg/geo"
 	"github.com/stretchr/testify/require"
+
+	"github.com/steveazz/closeby/pkg/geo"
 )
 
 func TestCustomer_InRangeCustomers(t *testing.T) {
