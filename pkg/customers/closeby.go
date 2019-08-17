@@ -1,7 +1,7 @@
 package customers
 
 import (
-	"github.com/SteveAzz/closeby/pkg/geo"
+	"github.com/steveazz/closeby/pkg/geo"
 )
 
 // InRangeCustomers takes a list of customers and checks if it is within the

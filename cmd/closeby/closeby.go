@@ -6,8 +6,8 @@ import (
 	"os"
 	"text/tabwriter"
 
-	"github.com/SteveAzz/closeby/pkg/customers"
-	"github.com/SteveAzz/closeby/pkg/geo"
+	"github.com/steveazz/closeby/pkg/customers"
+	"github.com/steveazz/closeby/pkg/geo"
 )
 
 func main() {

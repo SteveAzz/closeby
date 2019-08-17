@@ -5,8 +5,8 @@ CURRENT_DIR = $(shell pwd)
 
 linux:
 	docker run \
-	-v ${CURRENT_DIR}:/go/src/github.com/SteveAzz/closeby \
-	-w /go/src/github.com/SteveAzz/closeby \
+	-v ${CURRENT_DIR}:/go/src/github.com/steveazz/closeby \
+	-w /go/src/github.com/steveazz/closeby \
 	-e GOOS=linux \
 	-e GOARCH=${GOARCH} \
 	golang:1.9.2-alpine3.7 \
@@ -14,8 +14,8 @@ linux:
 
 darwin:
 	docker run \
-	-v ${CURRENT_DIR}:/go/src/github.com/SteveAzz/closeby \
-	-w /go/src/github.com/SteveAzz/closeby \
+	-v ${CURRENT_DIR}:/go/src/github.com/steveazz/closeby \
+	-w /go/src/github.com/steveazz/closeby \
 	-e GOOS=darwin \
 	-e GOARCH=${GOARCH} \
 	golang:1.9.2-alpine3.7 \
@@ -23,8 +23,8 @@ darwin:
 
 windows:
 	docker run \
-	-v ${CURRENT_DIR}:/go/src/github.com/SteveAzz/closeby \
-	-w /go/src/github.com/SteveAzz/closeby \
+	-v ${CURRENT_DIR}:/go/src/github.com/steveazz/closeby \
+	-w /go/src/github.com/steveazz/closeby \
 	-e GOOS=windows \
 	-e GOARCH=${GOARCH} \
 	golang:1.9.2-alpine3.7 \
@@ -32,8 +32,8 @@ windows:
 
 make test:
 	docker run \
-	-v ${CURRENT_DIR}:/go/src/github.com/SteveAzz/closeby \
-	-w /go/src/github.com/SteveAzz/closeby \
+	-v ${CURRENT_DIR}:/go/src/github.com/steveazz/closeby \
+	-w /go/src/github.com/steveazz/closeby \
 	golang:1.9.2-alpine3.7 \
 	go test -v ./...
 
